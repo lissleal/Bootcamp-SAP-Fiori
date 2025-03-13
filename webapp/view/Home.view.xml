@@ -2,6 +2,10 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-    <Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
+        <Button text="{i18n>textBotoni18n}" id="buttonPrueba"
+						press="onPress"
+						ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+					
+		</Button>
     </Page>
 </mvc:View>

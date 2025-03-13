@@ -15,6 +15,7 @@
             "version": "1.16.5",
             "toolsId": "de87d90b-957c-47ae-8cfc-55a31851db59"
         },
+        
         "dataSources": {
             "mainService": {
                 "uri": "/northwind/northwind.svc/",
