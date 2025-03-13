@@ -2,6 +2,10 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-    <Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
+	<VBox id="vTest">
+    	<Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
+		<Button id="btnBuscar" text="{i18n>textBuscar}" press="onPress"/>
+	</VBox>
+	
     </Page>
 </mvc:View>
