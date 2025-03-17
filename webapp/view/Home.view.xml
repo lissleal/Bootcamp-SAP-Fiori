@@ -14,7 +14,7 @@
 			path: 'ProductCollection>/'
 		}" >
 		<StandardListItem
-			title="{ProductName}"
+			title="{ProductCollection>ProductName}"
 		id="SLI"/>
 	</List>
 	
