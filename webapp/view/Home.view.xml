@@ -1,5 +1,6 @@
 <mvc:View controllerName="com.bootcamp.sapui5.freestyle.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
     xmlns="sap.m">
 
     <Page id="page" title="{i18n>title}">
@@ -8,34 +9,10 @@
 			<Button id="btnBuscar" text="{i18n>textBuscar}" press="onPress"/>
 		</VBox>
 		<VBox>
-			<Table inset="false"
-				items="{ 
-					path:'ProductCollection>/'
-				}" >
-				<columns>
-					<Column>
-						<Text text="{i18n>Product}"/>
-					</Column>
-					<Column>
-						<Text text="{i18n>UnitPrice}"/>
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem vAlign="Middle">
-						<cells>
-							<ObjectIdentifier 
-								title="{ProductCollection>ProductID}"
-								text="{ProductCollection>ProductName}" />
-							<ObjectNumber 
-								number="{
-									parts:[{path:'ProductCollection>UnitPrice'},{path:''}],
-									type: 'sap.ui.model.type.Currency',
-									formatOptions: {showMeasure: true}
-								}"/>
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
+			<c:Fragment
+			fragmentName="com.bootcamp.sapui5.freestyle.view.fragments.ProductsTable"
+			type="XML"
+			/>
 		</VBox>
 
     </Page>
