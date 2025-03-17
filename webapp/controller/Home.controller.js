@@ -1,6 +1,7 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "com/bootcamp/sapui5/freestyle/utils/HomeHelper"
+
 ], (Controller, HomeHelper) => {
     "use strict";
 
@@ -9,7 +10,7 @@ sap.ui.define([
         },
         onPress: async function(){
             let oDatos = await HomeHelper.getDataProducts();
-            console.log(oDatos)
-        }
+            await HomeHelper.setProductModel(this, oDatos[0].results);
+        }    
     });
 });

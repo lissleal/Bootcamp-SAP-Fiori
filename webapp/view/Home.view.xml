@@ -6,6 +6,17 @@
     	<Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
 		<Button id="btnBuscar" text="{i18n>textBuscar}" press="onPress"/>
 	</VBox>
+
+		<List
+		headerText="Products" id="listaPrueba"
+		headerLevel="H2"
+		items="{
+			path: 'ProductCollection>/'
+		}" >
+		<StandardListItem
+			title="{ProductName}"
+		id="SLI"/>
+	</List>
 	
     </Page>
 </mvc:View>
