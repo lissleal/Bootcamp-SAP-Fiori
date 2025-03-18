@@ -15,7 +15,7 @@ xmlns:c="sap.ui.core"
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem vAlign="Middle">
+					<ColumnListItem vAlign="Middle" press="onItemPress" type="Active" >
 						<cells>
 							<ObjectIdentifier 
 								title="{ProductCollection>ProductID}"
