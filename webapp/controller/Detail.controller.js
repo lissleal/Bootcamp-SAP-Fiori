@@ -11,7 +11,6 @@ sap.ui.define([
                 oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
             },
             _onObjectMatched: function (oEvent) {
-                // Obtener el ProductID de la URL y enlazar el contexto
                 let sProductID = oEvent.getParameter("arguments").ProductID;
                 this.getView().bindElement({
                     path: "/Products(" + sProductID + ")",
