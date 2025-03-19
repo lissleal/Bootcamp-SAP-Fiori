@@ -11,7 +11,14 @@ sap.ui.define([
             this.oRouter = this.getOwnerComponent().getRouter();
         },
         onPress: async function(){
-            let oDatos = await HomeHelper.getDataProducts();     
+            let oFilter =[];
+            let sValue = this.byId("inputID").getValue();
+
+            if(sValue){
+                oFilter = new Filter("ProductID", FilterOperator.EQ, sValue)
+            }
+
+            let oDatos = await HomeHelper.getDataProducts([oFilter]);     
             await HomeHelper.setProductModel(this, oDatos[0].results);                      
         },
         //Navega a vista detail
@@ -22,17 +29,18 @@ sap.ui.define([
             ProductID: oDatos.ProductID
             });
         },
-        onChange: async function(oEvent){
-            let oFilter = [];
-            let oSource = oEvent.getSource();
-            let oTable = this.getView().byId("idProductsTable");
-            let oBinding = oTable.getBinding("items");
+        // onChange: async function(oEvent){
+        //     let oFilter = [];
+        //     let oSource = oEvent.getSource();
+        //     let oTable = this.getView().byId("idProductsTable");
+        //     let oBinding = oTable.getBinding("items");
 
-            if(oSource.getValue()){
-                oFilter = new Filter("ProductID", FilterOperator.EQ, oSource.getValue());
-            }
-            oBinding.filter(oFilter);
-        }
+        //     if(oSource.getValue()){
+        //         oFilter = new Filter("ProductID", FilterOperator.EQ, oSource.getValue());
+        //     }
+        //     oBinding.filter(oFilter);
+        // }
+
     
     });
 });
