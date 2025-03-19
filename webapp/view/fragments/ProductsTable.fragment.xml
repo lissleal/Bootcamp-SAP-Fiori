@@ -1,7 +1,7 @@
 <c:FragmentDefinition
 xmlns="sap.m"
 xmlns:c="sap.ui.core">
-   	<Table inset="false"
+   	<Table inset="false" id="idProductsTable"
 				items="{ 
 					path:'ProductCollection>/'
 				}" >
