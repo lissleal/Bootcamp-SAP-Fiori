@@ -1,9 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "com/bootcamp/sapui5/freestyle/utils/HomeHelper",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
-], (Controller, HomeHelper, Filter, FilterOperator) => {
+], (Controller, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend("com.bootcamp.sapui5.freestyle.controller.Home", {
@@ -11,35 +10,26 @@ sap.ui.define([
             this.oRouter = this.getOwnerComponent().getRouter();
         },
         onPress: async function(){
-            let oFilter =[];
             let sValue = this.byId("inputID").getValue();
+            let oTable = this.getView().byId("idProductsTable");
+            let oBinding = oTable.getBinding("items");
 
             if(sValue){
-                oFilter = new Filter("ProductID", FilterOperator.EQ, sValue)
+                let oFilter = new Filter("ProductID", FilterOperator.EQ, sValue);
+                oBinding.filter([oFilter]);
+            } else {
+                oBinding.filter([]);
             }
-
-            let oDatos = await HomeHelper.getDataProducts([oFilter]);     
-            await HomeHelper.setProductModel(this, oDatos[0].results);                      
+             
         },
-        //Navega a vista detail
+         //Navega a vista detail
         onItemPress: function(oEvent){
             let oSource = oEvent.getSource();
-            let oDatos = oSource.getBindingContext("ProductCollection").getObject();
+            let oDatos = oSource.getBindingContext().getObject();
             this.oRouter.navTo("detail", {
             ProductID: oDatos.ProductID
             });
-        },
-        // onChange: async function(oEvent){
-        //     let oFilter = [];
-        //     let oSource = oEvent.getSource();
-        //     let oTable = this.getView().byId("idProductsTable");
-        //     let oBinding = oTable.getBinding("items");
-
-        //     if(oSource.getValue()){
-        //         oFilter = new Filter("ProductID", FilterOperator.EQ, oSource.getValue());
-        //     }
-        //     oBinding.filter(oFilter);
-        // }
+        }
 
     
     });

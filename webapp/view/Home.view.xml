@@ -7,7 +7,7 @@
 		<VBox id="vTest">
 			<Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
 			<Toolbar >
-				<Input change="onChange" id="inputID"/>
+				<Input id="inputID"/>
 				<Button text="{i18n>textBuscar}" press="onPress" id="btnBuscar"/>
 			</Toolbar>
 		</VBox>

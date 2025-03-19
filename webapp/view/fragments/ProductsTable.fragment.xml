@@ -3,7 +3,7 @@ xmlns="sap.m"
 xmlns:c="sap.ui.core">
    	<Table inset="false" id="idProductsTable"
 				items="{ 
-					path:'ProductCollection>/'
+					path:'/Products'
 				}" >
 				<columns>
 					<Column>
@@ -12,19 +12,35 @@ xmlns:c="sap.ui.core">
 					<Column>
 						<Text text="{i18n>UnitPrice}"/>
 					</Column>
+					<Column >
+                        <Text
+                            text="{i18n>UnitsInStock}"
+                        />
+                    </Column>
+                    <Column>
+                        <Text
+                            text="{i18n>QuantityPerUnit}"
+                        />
+                    </Column>
 				</columns>
 				<items>
 					<ColumnListItem vAlign="Middle" press="onItemPress" type="Active" >
 						<cells>
 							<ObjectIdentifier 
-								title="{ProductCollection>ProductID}"
-								text="{ProductCollection>ProductName}" />
+								title="{ProductID}"
+								text="{ProductName}" />
 							<ObjectNumber 
 								number="{
-									parts:[{path:'ProductCollection>UnitPrice'},{path:''}],
+									parts:[{path:'UnitPrice'},{path:''}],
 									type: 'sap.ui.model.type.Currency',
 									formatOptions: {showMeasure: true}
 								}"/>
+							<Text
+                                text="{UnitsInStock}"
+                            />
+                            <Text
+                                text="{QuantityPerUnit}"
+                            />
 						</cells>
 					</ColumnListItem>
 				</items>

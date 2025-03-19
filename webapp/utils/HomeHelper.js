@@ -7,22 +7,7 @@ sap.ui.define([
         init: function (oNorthwindModel) {
             this._oNorthwindModel = oNorthwindModel;
         },
-        getDataProducts: async function (oFilters) {
-            // let oFilters = [];
-            return HomeService.readProducts(this._oNorthwindModel, oFilters);
-        },
-        setProductModel: async function (oController, oDatos) {
-            let oListModel =
-                oController.getOwnerComponent().getModel('ProductCollection');
-            if (!oListModel) {
-                const oModel = new JSONModel([]);
-                oModel.setSizeLimit(1000000);
-                oController.getOwnerComponent().setModel(oModel, "ProductCollection");
-                oListModel =
-                    oController.getOwnerComponent().getModel('ProductCollection');
-            }
-            oListModel.setData(oDatos);
-        },
+     
 
     };
 });
