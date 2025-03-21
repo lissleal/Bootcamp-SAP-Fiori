@@ -1,23 +1,45 @@
-<mvc:View controllerName="com.bootcamp.sapui5.freestyle.controller.Home"
+<mvc:View
+    controllerName="com.bootcamp.sapui5.freestyle.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
-	xmlns:c="sap.ui.core"
-    xmlns="sap.m">
-
-    <Page id="page" title="{i18n>title}">
-		<VBox id="vTest">
-			<Text id="textPrueba" text="{i18n>textPruebai18n}"></Text>
-			<Toolbar >
-				<Input change="onChange" id="inputID"/>
-				<Button text="{i18n>textBuscar}" press="onPress" id="btnBuscar"/>
-			</Toolbar>
-		</VBox>
-		<VBox>
-			<c:Fragment
-			fragmentName="com.bootcamp.sapui5.freestyle.view.fragments.ProductsTable"
-			type="XML"
-			/>
-		</VBox>
-
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <VBox id="vTest">
+            <Text
+                id="textPrueba"
+                text="{i18n>textPruebai18n}"
+            />
+            <Toolbar>
+                <Input
+                    value="{LocalDataModel>/valueInput}"
+                />
+                <ComboBox
+					selectedKey="{LocalDataModel>/selectedKey}"
+                    items="{
+					path: '/Categories',
+					sorter: { path: 'CategoryName' }
+				}"
+                >
+                    <c:Item
+                        key="{CategoryID}"
+                        text="{CategoryName}"
+                    />
+                </ComboBox>
+                <Button
+                    text="{i18n>textBuscar}"
+                    press="onPress"
+                />
+            </Toolbar>
+        </VBox>
+        <VBox>
+            <c:Fragment
+                fragmentName="com.bootcamp.sapui5.freestyle.view.fragments.ProductsTable"
+                type="XML"
+            />
+        </VBox>
     </Page>
-
 </mvc:View>

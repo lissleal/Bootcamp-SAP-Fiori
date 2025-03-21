@@ -12,19 +12,22 @@ sap.ui.define([
         },
         onPress: async function(){
             let oFilter =[];
-            let sValue = this.byId("inputID").getValue();
-
-            if(sValue){
-                oFilter = new Filter("ProductID", FilterOperator.EQ, sValue)
+            let values = this.getOwnerComponent().getModel("LocalDataModel").getData()
+            if(values.valueInput){
+                oFilter.push(new Filter("ProductID", FilterOperator.EQ, values.valueInput))
+            }
+            if(values.selectedKey){
+                oFilter.push(new Filter("CategoryID", FilterOperator.EQ, values.selectedKey))
             }
 
             let oDatos = await HomeHelper.getDataProducts([oFilter]);     
             await HomeHelper.setProductModel(this, oDatos[0].results);                      
         },
+
         //Navega a vista detail
         onItemPress: function(oEvent){
             let oSource = oEvent.getSource();
-            let oDatos = oSource.getBindingContext("ProductCollection").getObject();
+            let oDatos = oSource.getBindingContext("").getObject();
             this.oRouter.navTo("detail", {
             ProductID: oDatos.ProductID
             });
